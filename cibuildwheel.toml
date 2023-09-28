@@ -95,6 +95,7 @@ SCCACHE_ERROR_LOG="/tmp/sccache.log"
 select = "*musllinux*"
 before-all = [
   "apk add --no-cache clang",
+  "scripts/before-all-linux.sh"
 ]
 # Remove ruff from test requirements. Wheels are only provided for musllinux_1_2,
 # not musllinux_1_1. Building from source would require rust.
