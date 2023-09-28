@@ -23,7 +23,7 @@ jobs:
           git -C mypy checkout $(cat mypy_commit)
       - name: Install cibuildwheel and pypyp
         run: |
-          pipx install cibuildwheel==2.15.0
+          pipx install cibuildwheel==2.16.1
           pipx install pypyp==1
       - id: set-matrix
         run: |
