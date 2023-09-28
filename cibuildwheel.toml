@@ -24,9 +24,6 @@ test-skip = "*arm64"
 
 build-verbosity = 1
 
-linux.before-all = [
-  "yum install -y llvm-toolset-7.0 || yum -v install -y llvm-toolset-7.0",
-]
 
 before-test = [
   "pip install -r {project}/mypy/test-requirements.txt",
