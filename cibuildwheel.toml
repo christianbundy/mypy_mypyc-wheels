@@ -79,6 +79,7 @@ before-all = [
 ]
 # Copy of the global 'before-test' with sccahe stats added
 before-test = [
+  "cat $SCCACHE_ERROR_LOG",
   "sccache --show-stats",
   "pip install -r {project}/mypy/test-requirements.txt",
 ]
