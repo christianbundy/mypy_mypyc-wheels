@@ -2,13 +2,16 @@
 
 set -euo pipefail
 
-yum install -y llvm-toolset-7.0 || yum -v install -y llvm-toolset-7.0
-
+# configuration
+arch="$(arch)"
 sccache_version=0.5.4
-sccache_url="https://github.com/mozilla/sccache/releases/download/v${sccache_version}/sccache-v${sccache_version}-$(arch)-unknown-linux-musl.tar.gz"
+sccache_install_location="/usr/bin"
 
-cd /tmp
+# derived constants
+sccache_name="sccache-v${sccache_version}-${arch}-unknown-linux-musl"
+sccache_url="https://github.com/mozilla/sccache/releases/download/v${sccache_version}/${sccache_name}.tar.gz"
 
-curl --output sccache.tar.gz --location "$sccache_url"
-tar -zxf sccache.tar.gz
-cp sccache/sccache /usr/bin
+# download tarball, extract binary, and install
+curl --location "$sccache_url" | tar --directory "$sccache_install_location" --strip-components 1 --gzip --extract "$sccache_name/sccache"
+
+yum install -y llvm-toolset-7.0 || yum -v install -y llvm-toolset-7.0
