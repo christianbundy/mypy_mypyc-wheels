@@ -40,7 +40,7 @@ jobs:
           echo "include=$MATRIX" | tee -a $GITHUB_OUTPUT
         env:
           CIBW_ARCHS_LINUX: x86_64
-          CIBW_ARCHS_MACOS: x86_64 arm64
+          CIBW_ARCHS_MACOS: x86_64 arm64 aarch64
           CIBW_ARCHS_WINDOWS: AMD64
 
   build_wheels:
