@@ -71,7 +71,6 @@ MYPYC_OPT_LEVEL = "2"
 MYPYC_DEBUG_LEVEL = "0"
 
 [tool.cibuildwheel.linux]
-archs = ["x86_64", "arm64"]
 environment-pass = ["SCCACHE_GHA_ENABLED", "ACTIONS_CACHE_URL", "ACTIONS_RUNTIME_TOKEN"]
 before-all = "scripts/before-all-linux.sh"
 # Copy of the global 'before-test' with sccahe stats addedw
