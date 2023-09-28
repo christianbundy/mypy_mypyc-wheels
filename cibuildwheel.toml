@@ -73,11 +73,9 @@ MYPYC_DEBUG_LEVEL = "0"
 [tool.cibuildwheel.linux]
 environment-pass = ["SCCACHE_GHA_ENABLED", "ACTIONS_CACHE_URL", "ACTIONS_RUNTIME_TOKEN"]
 before-all = "scripts/before-all-linux.sh"
-# Copy of the global 'before-test' with sccahe stats addedw
+# Copy of the global 'before-test' with sccahe stats added
 before-test = [
   "sccache --show-stats",
-  "sed -i -e '/ruff/d' {project}/mypy/test-requirements.txt",
-  "git -C {project}/mypy update-index --assume-unchanged test-requirements.txt",
   "pip install -r {project}/mypy/test-requirements.txt",
 ]
 
