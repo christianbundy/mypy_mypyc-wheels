@@ -39,9 +39,9 @@ jobs:
           )
           echo "include=$MATRIX" | tee -a $GITHUB_OUTPUT
         env:
-          CIBW_ARCHS_LINUX: x86_64 aarch64
-          CIBW_ARCHS_MACOS: x86_64 arm64 aarch64
-          CIBW_ARCHS_WINDOWS: AMD64
+          CIBW_ARCHS_LINUX: x86_64 arm64
+          CIBW_ARCHS_MACOS: ""
+          CIBW_ARCHS_WINDOWS: ""
 
   build_wheels:
     name: Build ${{ matrix.only }}
@@ -54,6 +54,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - uses: mozilla-actions/sccache-action@v0.0.3
+      - uses: docker/setup-qemu-action@v2
+        with:
+          platforms: arm64
       - name: Checkout mypy
         shell: bash
         # use a commit hash checked into a file to get the mypy revision to build.
