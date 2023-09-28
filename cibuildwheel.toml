@@ -97,6 +97,7 @@ before-all = [
 # not musllinux_1_1. Building from source would require rust.
 # Ruff is only used for linting, safe to skip for tests.
 before-test = [
+  "sccache --show-stats",
   "sed -i -e '/ruff/d' {project}/mypy/test-requirements.txt",
   "git -C {project}/mypy update-index --assume-unchanged test-requirements.txt",
   "pip install -r {project}/mypy/test-requirements.txt",
