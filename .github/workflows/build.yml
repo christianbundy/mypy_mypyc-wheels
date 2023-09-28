@@ -40,8 +40,8 @@ jobs:
           echo "include=$MATRIX" | tee -a $GITHUB_OUTPUT
         env:
           CIBW_ARCHS_LINUX: x86_64 arm64
-          CIBW_ARCHS_MACOS: ""
-          CIBW_ARCHS_WINDOWS: ""
+          CIBW_ARCHS_MACOS: x86_64
+          CIBW_ARCHS_WINDOWS: x86_64
 
   build_wheels:
     name: Build ${{ matrix.only }}
