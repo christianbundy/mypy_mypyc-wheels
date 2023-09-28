@@ -8,6 +8,11 @@ skip = [
   "*-musllinux_i686",
   "*-win32",
   "pp*",
+  "cppy37*",
+  "cppy38*",
+  "cppy39*",
+  "cppy310*",
+  "*win*"
 ]
 
 # Apple Silicon support
