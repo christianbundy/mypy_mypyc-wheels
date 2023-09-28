@@ -16,4 +16,3 @@ curl --location "$sccache_url" | tar --directory "$sccache_install_location" --s
 touch /tmp/sccache.log
 cat /tmp/sccache.log
 
-yum install -y llvm-toolset-7.0 || yum -v install -y llvm-toolset-7.0

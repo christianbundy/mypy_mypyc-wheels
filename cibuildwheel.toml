@@ -72,7 +72,10 @@ MYPYC_DEBUG_LEVEL = "0"
 
 [tool.cibuildwheel.linux]
 environment-pass = ["SCCACHE_GHA_ENABLED", "ACTIONS_CACHE_URL", "ACTIONS_RUNTIME_TOKEN"]
-before-all = "scripts/before-all-linux.sh"
+before-all = [
+  "scripts/before-all-linux.sh",
+  "yum install -y llvm-toolset-7.0 || yum -v install -y llvm-toolset-7.0"
+]
 # Copy of the global 'before-test' with sccahe stats added
 before-test = [
   "sccache --show-stats",
@@ -94,8 +97,8 @@ SCCACHE_ERROR_LOG="/tmp/sccache.log"
 [[tool.cibuildwheel.overrides]]
 select = "*musllinux*"
 before-all = [
-  "apk add --no-cache clang",
-  "scripts/before-all-linux.sh"
+  "scripts/before-all-linux.sh",
+  "apk add --no-cache clang"
 ]
 # Remove ruff from test requirements. Wheels are only provided for musllinux_1_2,
 # not musllinux_1_1. Building from source would require rust.
