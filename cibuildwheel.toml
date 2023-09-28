@@ -87,6 +87,7 @@ MYPYC_DEBUG_LEVEL = "0"
 PATH="$PATH:/opt/rh/llvm-toolset-7.0/root/usr/bin"
 LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/rh/llvm-toolset-7.0/root/usr/lib64"
 CC="sccache clang"
+SCCACHE_LOG="debug"
 
 [[tool.cibuildwheel.overrides]]
 select = "*musllinux*"
