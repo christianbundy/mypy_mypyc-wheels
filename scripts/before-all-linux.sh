@@ -13,6 +13,3 @@ sccache_url="https://github.com/mozilla/sccache/releases/download/v${sccache_ver
 
 # download tarball, extract binary, and install
 curl --location "$sccache_url" | tar --directory "$sccache_install_location" --strip-components 1 --gzip --extract "$sccache_name/sccache"
-touch /tmp/sccache.log
-cat /tmp/sccache.log
-

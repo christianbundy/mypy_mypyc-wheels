@@ -26,6 +26,7 @@ build-verbosity = 1
 
 
 before-test = [
+  "cat $SCCACHE_ERROR_LOG",
   "pip install -r {project}/mypy/test-requirements.txt",
 ]
 
@@ -104,6 +105,7 @@ before-all = [
 # not musllinux_1_1. Building from source would require rust.
 # Ruff is only used for linting, safe to skip for tests.
 before-test = [
+  "cat $SCCACHE_ERROR_LOG",
   "sccache --show-stats",
   "sed -i -e '/ruff/d' {project}/mypy/test-requirements.txt",
   "git -C {project}/mypy update-index --assume-unchanged test-requirements.txt",
