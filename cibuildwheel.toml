@@ -56,7 +56,7 @@ windows.test-command = """ \
 --build-option = "--use-mypyc"
 
 [tool.cibuildwheel.environment]
-MYPYC_OPT_LEVEL = "2"
+MYPYC_OPT_LEVEL = "3"
 MYPYC_DEBUG_LEVEL = "0"
 
 [tool.cibuildwheel.windows.environment]
@@ -77,7 +77,7 @@ before-test = [
 
 [tool.cibuildwheel.linux.environment]
 # Add llvm paths to environment to eliminate scl usage (like manylinux image does for gcc toolset).
-MYPYC_OPT_LEVEL = "2"
+MYPYC_OPT_LEVEL = "1"
 MYPYC_DEBUG_LEVEL = "0"
 PATH="$PATH:/opt/rh/llvm-toolset-7.0/root/usr/bin"
 LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/rh/llvm-toolset-7.0/root/usr/lib64"
@@ -99,4 +99,4 @@ before-test = [
   "git -C {project}/mypy update-index --assume-unchanged test-requirements.txt",
   "pip install -r {project}/mypy/test-requirements.txt",
 ]
-environment = { MYPYC_OPT_LEVEL="2", MYPYC_DEBUG_LEVEL="0", CC="sccache clang" }
+environment = { MYPYC_OPT_LEVEL="1", MYPYC_DEBUG_LEVEL="0", CC="sccache clang" }
