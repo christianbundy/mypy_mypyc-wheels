@@ -19,10 +19,8 @@ test-skip = ["*-macosx_arm64", "*linux_aarch64"]
 build-verbosity = 1
 
 
-before-test = [
-  "cat $SCCACHE_ERROR_LOG",
-  "pip install -r {project}/mypy/test-requirements.txt",
-]
+before-test = "pip install -r {project}/mypy/test-requirements.txt"
+
 
 # pytest looks for configuration files in the parent directories of where the tests live.
 # since we are trying to run the tests from their installed location, we copy those into
@@ -73,7 +71,6 @@ before-all = [
 ]
 # Copy of the global 'before-test' with sccahe stats added
 before-test = [
-  "cat $SCCACHE_ERROR_LOG",
   "sccache --show-stats",
   "pip install -r {project}/mypy/test-requirements.txt",
 ]
@@ -86,8 +83,6 @@ MYPYC_DEBUG_LEVEL = "0"
 PATH="$PATH:/opt/rh/llvm-toolset-7.0/root/usr/bin"
 LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/rh/llvm-toolset-7.0/root/usr/lib64"
 CC="sccache clang"
-SCCACHE_LOG="debug"
-SCCACHE_ERROR_LOG="/tmp/sccache.log"
 
 
 [[tool.cibuildwheel.overrides]]
@@ -100,7 +95,6 @@ before-all = [
 # not musllinux_1_1. Building from source would require rust.
 # Ruff is only used for linting, safe to skip for tests.
 before-test = [
-  "cat $SCCACHE_ERROR_LOG",
   "sccache --show-stats",
   "sed -i -e '/ruff/d' {project}/mypy/test-requirements.txt",
   "git -C {project}/mypy update-index --assume-unchanged test-requirements.txt",
