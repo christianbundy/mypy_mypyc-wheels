@@ -51,7 +51,8 @@ jobs:
       fail-fast: false
       matrix:
         include: ${{ fromJson(needs.generate_wheels_matrix.outputs.include) }}
-
+    env:
+      SCCACHE_GHA_ENABLED: "true"
     steps:
       - uses: actions/checkout@v3
       - uses: mozilla-actions/sccache-action@v0.0.3
