@@ -69,7 +69,6 @@ before-all = [
   "scripts/before-all-linux.sh",
   "yum install -y llvm-toolset-7.0 || yum -v install -y llvm-toolset-7.0"
 ]
-# Copy of the global 'before-test' with sccahe stats added
 before-test = [
   "sccache --show-stats",
   "pip install -r {project}/mypy/test-requirements.txt",
