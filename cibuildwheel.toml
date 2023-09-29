@@ -99,4 +99,4 @@ before-test = [
   "git -C {project}/mypy update-index --assume-unchanged test-requirements.txt",
   "pip install -r {project}/mypy/test-requirements.txt",
 ]
-environment = { MYPYC_OPT_LEVEL="3", MYPYC_DEBUG_LEVEL="0", CC="clang" }
+environment = { MYPYC_OPT_LEVEL="3", MYPYC_DEBUG_LEVEL="0", CC="sccache clang" }
