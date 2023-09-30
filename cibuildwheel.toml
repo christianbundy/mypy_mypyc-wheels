@@ -95,4 +95,4 @@ environment = { MYPYC_OPT_LEVEL="3", MYPYC_DEBUG_LEVEL="0", CC="clang" }
 select = "*linux_aarch64"
 # Reduce MYPY_OPT_LEVEL to keep build times reasonable, since the GitHub Actions
 # runners are running aarch64 emulation on x86_64 and very slow in comparison.
-environment = { MYPYC_OPT_LEVEL="1", MYPYC_DEBUG_LEVEL="0", CC="clang" }
+environment.MYPYC_OPT_LEVEL = 1
