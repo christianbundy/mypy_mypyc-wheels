@@ -94,7 +94,7 @@ environment = { MYPYC_OPT_LEVEL="3", MYPYC_DEBUG_LEVEL="0", CC="clang" }
 select = "*linux_aarch64"
 # Reduce MYPY_OPT_LEVEL to keep build times reasonable, since the GitHub Actions
 # runners are running aarch64 emulation on x86_64 and very slow in comparison.
-environment.MYPYC_OPT_LEVEL = 1
+environment.MYPYC_OPT_LEVEL = 2
 # Only run testcheck and mypyc tests, since the other tests are slow and can be flaky (because of TimeoutError).
 test-command = """ \
   ( \
