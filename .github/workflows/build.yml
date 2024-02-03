@@ -58,7 +58,6 @@ jobs:
         with:
           platforms: arm64
       - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
       - name: Checkout mypy
         shell: bash
         # use a commit hash checked into a file to get the mypy revision to build.
