@@ -86,7 +86,7 @@ environment = { MYPYC_OPT_LEVEL="3", MYPYC_DEBUG_LEVEL="0", CC="clang" }
 
 [[tool.cibuildwheel.overrides]]
 select = "*linux_aarch64"
-# Only run testcheck and mypyc tests, since the other tests are slow and can be flaky (because of TimeoutError).
+# Only run testcheck, since the other tests are slow and can be flaky (because of TimeoutError).
 test-command = """ \
   ( \
      DIR=$(python -c 'import mypy, os; dn = os.path.dirname; print(dn(dn(mypy.__path__[0])))') \
